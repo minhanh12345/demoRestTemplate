@@ -18,7 +18,7 @@ public class ThongTinChung {
 
     private List<ThongTinNhanSu> thongTinNhanSu;
 
-    private List<ChuSoHuuHuongLoiEntity> chuSoHuuHuongLoi;
+    private List<ChuSoHuuHuongLoi> chuSoHuuHuongLoi;
 
     private ThongTinTKTT thongTinTKTT;
 

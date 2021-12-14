@@ -13,6 +13,6 @@ public class ThongTinTKTT {
     private String soPhuTK;
     private String chuKyInSoPhu;
 
-    private List<TaiKhoan> listTaiKhoan;
+    private List<String> listTaiKhoan;
 
 }
