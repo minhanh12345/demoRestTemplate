@@ -15,6 +15,5 @@ public class DonViKinhDoanhTrenHeThongEntity {
     private String chiNhanh;
     private String diaChi;
     private String sdt;
-    @OneToOne
-    private ThongTinChungEntity thongTinChungEntity;
+
 }

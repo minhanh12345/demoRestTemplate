@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import com.example.demo.dto.ThongTinTKTT;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -15,8 +16,6 @@ public class TaiKhoanEntity {
     private String loaiTien;
     private String mucDichSuDung;
     private String tenTK;
-  @ManyToOne
-    private ThongTinChungEntity thongTinChungEntity;
-  @OneToMany
+  @OneToMany(cascade = {CascadeType.ALL})
     private List<SoDienThoaiDangKyEntity> soDienThoaiDangKyList;
 }

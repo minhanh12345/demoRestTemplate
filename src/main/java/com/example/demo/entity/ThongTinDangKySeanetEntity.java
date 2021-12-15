@@ -20,6 +20,5 @@ public class ThongTinDangKySeanetEntity {
     private String sdtNgPheDuyet;
     private String emailNgPheDuyet;
     private String tenTruyCapDVNgPheDuyet;
-    @OneToOne
-    private ThongTinChungEntity thongTinChungEntity;
+
 }

@@ -1,9 +1,6 @@
 package com.example.demo.service;
 
-import com.example.demo.dto.ChuSoHuuHuongLoi;
-import com.example.demo.dto.ThongTinChung;
-import com.example.demo.dto.ThongTinDangKySeanet;
-import com.example.demo.dto.ThongTinNhanSu;
+import com.example.demo.dto.*;
 import com.example.demo.entity.*;
 import com.example.demo.repo.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -48,8 +45,10 @@ public class ThongTinChungService {
         thongTinChungEntity.setFileGiayToFATCA(thongTinChung.getFileGiayToFATCA());
 
         ThoaThuanPhapLyEntity thoaThuanPhapLyEntity = mapper.convertValue(thongTinChung.getThoaThuanPhapLy(), ThoaThuanPhapLyEntity.class);
-        thongTinChungEntity.setThoaThuanPhapLy(thoaThuanPhapLyEntity);
         thoaThuanPhapLyRepo.save(thoaThuanPhapLyEntity);
+        thongTinChungEntity.setThoaThuanPhapLy(thoaThuanPhapLyEntity);
+
+
 
         FileGiayToBatBuocEntity fileGiayToBatBuocEntity = mapper.convertValue(thongTinChung.getFileGiayToBatBuoc(), FileGiayToBatBuocEntity.class);
         thongTinChungEntity.setFileGiayToBatBuoc(fileGiayToBatBuocEntity);
@@ -71,11 +70,11 @@ public class ThongTinChungService {
         for (ThongTinNhanSu tt : thongTinChung.getThongTinNhanSu()
         ) {
             ThongTinNhanSuEntity thongTinNhanSu = mapper.convertValue(tt, ThongTinNhanSuEntity.class);
+
             thongTinNhanSuRepo.save(thongTinNhanSu);
             thongTinNhanSuEntityList.add(thongTinNhanSu);
         }
         thongTinChungEntity.setThongTinNhanSu(thongTinNhanSuEntityList);
-
         List<ChuSoHuuHuongLoiEntity> chuSoHuuHuongLoiEntityList = new ArrayList<>();
         for (ChuSoHuuHuongLoi tt : thongTinChung.getChuSoHuuHuongLoi()
         ) {
@@ -83,21 +82,34 @@ public class ThongTinChungService {
             chuSoHuuHuongLoiRepo.save(chuSoHuuHuongLoiEntity);
             chuSoHuuHuongLoiEntityList.add(chuSoHuuHuongLoiEntity);
         }
-        thongTinChungEntity.setThongTinNhanSu(thongTinNhanSuEntityList);
+        thongTinChungEntity.setChuSoHuuHuongLoi(chuSoHuuHuongLoiEntityList);
 
         ThongTinTKTTEntity thongTinTKTT = mapper.convertValue(thongTinChung.getThongTinTKTT(), ThongTinTKTTEntity.class);
         List<TaiKhoanEntity> taiKhoanEntityList = new ArrayList<>();
         List<SoDienThoaiDangKyEntity> soDienThoaiDangKyEntityList = new ArrayList<>();
-        for (String tt : thongTinChung.getThongTinTKTT().getListTaiKhoan()
+        for (TaiKhoan tt : thongTinChung.getThongTinTKTT().getListTaiKhoan()
         ) {
             TaiKhoanEntity taiKhoanEntity = mapper.convertValue(tt, TaiKhoanEntity.class);
+            for (String sdt : tt.getListSoDienThoaiDangKy()
+            ) {
+                SoDienThoaiDangKyEntity soDienThoaiDangKyEntity = new SoDienThoaiDangKyEntity();
+                soDienThoaiDangKyEntity.setSdt(sdt);
+                soDienThoaiDangKyRepo.save(soDienThoaiDangKyEntity);
+                soDienThoaiDangKyEntityList.add(soDienThoaiDangKyEntity);
+            }
+            taiKhoanEntity.setSoDienThoaiDangKyList(soDienThoaiDangKyEntityList);
             taiKhoanRepo.save(taiKhoanEntity);
-
             taiKhoanEntityList.add(taiKhoanEntity);
         }
-
-        return null;
+        thongTinTKTT.setListTaiKhoan(taiKhoanEntityList);
+        thongTinChungEntity.setThongTinTKTT(thongTinTKTT);
+        thongTinTKTTRepo.save(thongTinTKTT);
+        thongTinChungRepo.save(thongTinChungEntity);
+        return thongTinChungEntity;
     }
 
+    public ThongTinChungEntity getById(Long id) {
+        return thongTinChungRepo.getById(id);
+    }
 
 }

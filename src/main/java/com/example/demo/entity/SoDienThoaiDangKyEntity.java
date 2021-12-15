@@ -11,6 +11,5 @@ public class SoDienThoaiDangKyEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String sdt;
-    @ManyToOne
-    private TaiKhoanEntity taiKhoan;
+
 }

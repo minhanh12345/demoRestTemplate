@@ -16,6 +16,5 @@ public class ThongTinDiaChiToChucEntity {
     private String phuongXa;
     private String diaChiCuThe;
     private String loaiDiaChi;
-@ManyToOne
-    private ThongTinDangKySeanetEntity thongTinDangKySeanet;
+
 }

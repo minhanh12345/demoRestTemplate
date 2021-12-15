@@ -13,8 +13,7 @@ public class ThongTinTKTTEntity {
     private String loaiSoTK;
     private String soPhuTK;
     private String chuKyInSoPhu;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<TaiKhoanEntity> listTaiKhoan;
-    @OneToOne
-    private ThongTinChungEntity thongTinChungEntity;
+
 }

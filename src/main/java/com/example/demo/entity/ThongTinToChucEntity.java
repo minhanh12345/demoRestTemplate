@@ -32,8 +32,7 @@ public class ThongTinToChucEntity {
     private String doanhThuNamTruoc;
     private Integer soLuongNhanVien;
     private String tongTaiSan;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<ThongTinDiaChiToChucEntity> thongTinDiaChiToChuc;
-    @OneToOne
-    private ThongTinChungEntity thongTinChungEntity;
+
 }

@@ -10,11 +10,9 @@ public class FileGiayToBatBuocEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String tinhThanhPho;
-    private String quanHuyen;
-    private String chiNhanh;
-    private String diaChi;
-    private String sdt;
-    @OneToOne
-    private ThongTinChungEntity thongTinChungEntity;
+    private String giayChungNhanDKKD;
+    private  String giayUyQuyenNguoiDaiDienPL;
+    private String gTPLNguoiDaiDienHP;
+    private String quyetDinhBoNhiemKTT;
+    private String gTTTKeToanTruong;
 }

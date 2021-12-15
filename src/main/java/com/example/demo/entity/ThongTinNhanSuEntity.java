@@ -29,6 +29,5 @@ public class ThongTinNhanSuEntity {
     private String diaChiHienTai;
     private String diaChiDKCTNuocNgoai;
     private String type;
-    @ManyToOne
-    private ThongTinChungEntity thongTinChungEntity;
+
 }

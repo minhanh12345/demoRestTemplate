@@ -12,21 +12,21 @@ public class ThongTinChungEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String soDKKD;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private FileGiayToBatBuocEntity fileGiayToBatBuoc;
     private String fileGiayToFATCA;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private ThongTinToChucEntity thongTinToChuc;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<ThongTinNhanSuEntity> thongTinNhanSu;
-    @OneToMany
+    @OneToMany(cascade = {CascadeType.ALL})
     private List<ChuSoHuuHuongLoiEntity> chuSoHuuHuongLoi;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private ThongTinTKTTEntity thongTinTKTT;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private ThoaThuanPhapLyEntity thoaThuanPhapLy;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private DonViKinhDoanhTrenHeThongEntity donViKinhDoanhTrenHeThong;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private ThongTinDangKySeanetEntity thongTinDangKySeanet;
 }

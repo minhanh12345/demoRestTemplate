@@ -23,6 +23,5 @@ public class ThoaThuanPhapLyEntity {
     private String sodinhDanh;
 
     private String thongTinDinhDanh;
-    @OneToOne
-    private ThongTinChungEntity thongTinChungEntity;
+
 }

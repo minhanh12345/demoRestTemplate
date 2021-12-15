@@ -22,6 +22,5 @@ public class ChuSoHuuHuongLoiEntity {
     private String noiCapGTND;
     private String diaChiThuongTru;
     private String noiOHienTai;
-    @ManyToOne
-    private ThongTinChungEntity thongTinChungEntity;
+
 }
