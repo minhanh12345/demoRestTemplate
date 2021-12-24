@@ -1,12 +1,16 @@
 package com.example.demo.entity;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Data
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class ThongTinChungEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

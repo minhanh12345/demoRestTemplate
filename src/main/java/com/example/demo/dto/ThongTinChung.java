@@ -24,7 +24,7 @@ public class ThongTinChung {
 
     private ThoaThuanPhapLy thoaThuanPhapLy;
 
-    private DonViKinhDoanhTrenHeThongEntity donViKinhDoanhTrenHeThong;
+    private DonViKinhDoanhTrenHeThong donViKinhDoanhTrenHeThong;
 
     private ThongTinDangKySeanet thongTinDangKySeanet;
 }

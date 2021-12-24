@@ -18,7 +18,11 @@ public class Controller {
         return new ResponseEntity<>(thongTinChungService.save(thongTinChung), HttpStatus.OK);
     }
     @GetMapping("/get{id}")
-    public ResponseEntity<ThongTinChungEntity> get(@PathVariable Long id){
+    public ResponseEntity<ThongTinChung> get(@PathVariable Long id){
         return new ResponseEntity<>(thongTinChungService.getById(id), HttpStatus.OK);
+    }
+    @PostMapping("/update{id}")
+    public ResponseEntity<ThongTinChungEntity> save(@RequestBody ThongTinChung thongTinChung,@PathVariable Long id){
+        return new ResponseEntity<>(thongTinChungService.update(thongTinChung,id), HttpStatus.OK);
     }
 }

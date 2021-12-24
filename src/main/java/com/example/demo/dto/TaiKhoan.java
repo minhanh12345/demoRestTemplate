@@ -14,5 +14,5 @@ public class TaiKhoan {
     private String loaiTien;
     private String mucDichSuDung;
     private String tenTK;
-private List<String> listSoDienThoaiDangKy;
+    private List<String> listSoDienThoaiDangKy;
 }
