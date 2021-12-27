@@ -199,15 +199,14 @@ public class ThongTinChungService {
         thongTinToChucEntity.setId(thongTinChungEntity.getThongTinToChuc().getId());
         thongTinToChucRepo.save(thongTinToChucEntity);
 
-        List<ThongTinNhanSuEntity> thongTinNhanSuEntityList = new ArrayList<>();
+
         for (int i = 0; i < thongTinChung.getThongTinNhanSu().size(); i++
         ) {
             ThongTinNhanSuEntity thongTinNhanSu = mapper.convertValue(thongTinChung.getThongTinNhanSu().get(i), ThongTinNhanSuEntity.class);
-            thongTinNhanSu.setId(thongTinChungEntity.getThongTinNhanSu().get(i).getId());
-            thongTinNhanSuRepo.save(thongTinNhanSu);
-            thongTinNhanSuEntityList.add(thongTinNhanSu);
+         thongTinNhanSu.setId(thongTinChungEntity.getThongTinNhanSu().get(i).getId());
+//            thongTinNhanSuEntityList.add(thongTinNhanSu);
         }
-        thongTinChungEntity.setThongTinNhanSu(thongTinNhanSuEntityList);
+
 
         List<ChuSoHuuHuongLoiEntity> chuSoHuuHuongLoiEntityList = new ArrayList<>();
         for (int i = 0; i<thongTinChung.getChuSoHuuHuongLoi().size(); i++
@@ -221,12 +220,9 @@ public class ThongTinChungService {
 
         ThongTinTKTTEntity thongTinTKTT = mapper.convertValue(thongTinChung.getThongTinTKTT(), ThongTinTKTTEntity.class);
 
-        List<TaiKhoanEntity> taiKhoanEntityList = new ArrayList<>();
-
         for (int i=0; i< thongTinChung.getThongTinTKTT().getListTaiKhoan().size(); i++
         ) {
             TaiKhoanEntity taiKhoanEntity = mapper.convertValue(thongTinChung.getThongTinTKTT().getListTaiKhoan().get(i), TaiKhoanEntity.class);
-            List<SoDienThoaiDangKyEntity> soDienThoaiDangKyEntityList = new ArrayList<>();
             for (int j = 0;  j < thongTinChung.getThongTinTKTT().getListTaiKhoan().get(i).getListSoDienThoaiDangKy().size(); j++
             ) {
                 SoDienThoaiDangKyEntity soDienThoaiDangKyEntity = new SoDienThoaiDangKyEntity();
@@ -234,11 +230,11 @@ public class ThongTinChungService {
                 soDienThoaiDangKyRepo.save(soDienThoaiDangKyEntity);
 //                soDienThoaiDangKyEntityList.add(soDienThoaiDangKyEntity);
             }
-            taiKhoanEntity.setSoDienThoaiDangKyList(soDienThoaiDangKyEntityList);
+            taiKhoanEntity.setId(thongTinTKTT.getListTaiKhoan().get(i).getId());
             taiKhoanRepo.save(taiKhoanEntity);
 //            taiKhoanEntityList.add(taiKhoanEntity);
         }
-        thongTinTKTT.setListTaiKhoan(taiKhoanEntityList);
+
         thongTinChungEntity.setThongTinTKTT(thongTinTKTT);
         thongTinTKTTRepo.save(thongTinTKTT);
         thongTinChungRepo.save(thongTinChungEntity);
